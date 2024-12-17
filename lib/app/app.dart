@@ -1,3 +1,4 @@
+import 'package:ecommerce/app/app_themeData.dart';
 import 'package:ecommerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,9 @@ class CraftyBay extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/',
+       theme:AppThemeData.lightThemeData,
+       darkTheme: AppThemeData.darkThemeData,
+       themeMode:ThemeMode.dark,
        routes: {
         '/' :(context) => const SplashScreen(),
        },

@@ -1,5 +1,7 @@
-import 'package:ecommerce/app.dart';
+
 import 'package:flutter/cupertino.dart';
+
+import 'app/app.dart';
 
 void main(){
   runApp(const CraftyBay());

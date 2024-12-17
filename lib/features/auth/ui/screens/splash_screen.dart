@@ -13,16 +13,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const Spacer(),
-            SvgPicture.asset(
-              AssetsPath.appLogoSvg,
-              width: 80,
-            ),
-            const Spacer()
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment:MainAxisAlignment.center,
+            children: [
+              const Spacer(),
+              SvgPicture.asset(
+                AssetsPath.appLogoSvg,
+                width:100,
+              ),
+              const Spacer()
+            ],
+          ),
         ),
       ),
     );
