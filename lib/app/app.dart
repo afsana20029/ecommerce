@@ -1,4 +1,6 @@
 import 'package:ecommerce/app/app_themeData.dart';
+import 'package:ecommerce/features/auth/ui/screens/email_verification_screen.dart';
+import 'package:ecommerce/features/auth/ui/screens/otp_varification_screen.dart';
 import 'package:ecommerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +11,16 @@ class CraftyBay extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/',
-       theme:AppThemeData.lightThemeData,
-       darkTheme: AppThemeData.darkThemeData,
-       themeMode:ThemeMode.dark,
-       routes: {
-        '/' :(context) => const SplashScreen(),
-       },
+      theme: AppThemeData.lightThemeData,
+      darkTheme: AppThemeData.darkThemeData,
+      themeMode: ThemeMode.light,
+      routes: {
+        '/': (context) => const SplashScreen(),
+        EmailVerificationScreen.name: (context) =>
+            const EmailVerificationScreen(),
+        OtpVarificationScreen.name: (context) =>
+            const OtpVarificationScreen(),
+      },
     );
   }
 }
