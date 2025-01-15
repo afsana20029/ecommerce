@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:ecommerce/app/app_colors.dart';
 import 'package:ecommerce/app/app_constants.dart';
+import 'package:ecommerce/features/auth/ui/screens/complete_profile_screen.dart';
 import 'package:ecommerce/features/auth/ui/widget/app_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
@@ -91,7 +92,9 @@ class _OtpVarificationScreenState extends State<OtpVarificationScreen> {
                   height: 24,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context,CompleteProfileScreen.name);
+                    },
                     child: const Text(
                       "Next",
                       style: TextStyle(color: Colors.white),
