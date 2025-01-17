@@ -52,7 +52,7 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
                   Container(
                     width: 10,
                     height: 10,
-                    margin: EdgeInsets.symmetric(horizontal: 2),
+                    margin: const EdgeInsets.symmetric(horizontal: 2),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: value == i
