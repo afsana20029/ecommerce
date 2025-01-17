@@ -1,7 +1,5 @@
-
 import 'package:ecommerce/features/auth/ui/widget/app_icon_widget.dart';
 import 'package:flutter/material.dart';
-
 
 class CompleteProfileScreen extends StatefulWidget {
   const CompleteProfileScreen({super.key});
@@ -18,7 +16,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
   final TextEditingController _mobileTEController = TextEditingController();
   final TextEditingController _cityTEController = TextEditingController();
   final TextEditingController _shippingAddressTEController =
-  TextEditingController();
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
