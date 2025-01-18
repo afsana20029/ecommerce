@@ -32,9 +32,9 @@ class ProductItemWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(children: [
-                  Text(
+                  const Text(
                     'Nike shoe latest edition- RF45GH',
                     maxLines: 1,
                     style: TextStyle(
