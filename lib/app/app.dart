@@ -7,6 +7,7 @@ import 'package:ecommerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecommerce/features/category/ui/screens/category_list_screens.dart';
 import 'package:ecommerce/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:ecommerce/features/home/ui/screens/home_screen.dart';
+import 'package:ecommerce/features/product/ui/screens/product_details_screen.dart';
 import 'package:ecommerce/features/product/ui/screens/product_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,6 +41,9 @@ class CraftyBay extends StatelessWidget {
         } else if (settings.name == ProductListScreen.name) {
           String name = settings.arguments as String;
           widget = ProductListScreen(categoryName: name);
+        }else if (settings.name == ProductDetailsScreen.name) {
+          int productId = settings.arguments as int;
+          widget = ProductDetailsScreen(productId: productId);
         }
 
         return MaterialPageRoute(
