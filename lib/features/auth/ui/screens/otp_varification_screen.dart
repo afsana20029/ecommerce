@@ -9,7 +9,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpVarificationScreen extends StatefulWidget {
-  const OtpVarificationScreen({super.key});
+  const OtpVarificationScreen({super.key, required String email});
   static const String name = '/otp-verification';
   @override
   State<OtpVarificationScreen> createState() => _OtpVarificationScreenState();

@@ -1,6 +1,7 @@
 import 'package:ecommerce/app/app_colors.dart';
 import 'package:ecommerce/features/product/ui/widget/color_picker_widget.dart';
 import 'package:ecommerce/features/product/ui/widget/product_image_carousel_slider.dart';
+import 'package:ecommerce/features/reviews/ui/screens/reviews_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -65,7 +66,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                             width: 8,
                                           ),
                                           TextButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.pushNamed(context,
+                                                    ReviewsScreen.name);
+                                              },
                                               child: const Text('Reviews')),
                                           Container(
                                             padding: const EdgeInsets.all(4),
@@ -129,14 +133,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           height: 8,
                         ),
                         const Text(
-                            "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-                                " Deserunt, obcaecati aspernatur libero rerum odit natus eius "
-                                "reprehenderit ex aliquam laudantium labore sit ipsam error"
-                                " doloremque quis ipsum inventore possimus? Inventore?",style:TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey,
-                        ),)
+                          "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+                          " Deserunt, obcaecati aspernatur libero rerum odit natus eius "
+                          "reprehenderit ex aliquam laudantium labore sit ipsam error"
+                          " doloremque quis ipsum inventore possimus? Inventore?",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey,
+                          ),
+                        )
                       ],
                     ),
                   ),
