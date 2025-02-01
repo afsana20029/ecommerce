@@ -1,9 +1,10 @@
 import 'package:ecommerce/app/app_colors.dart';
 import 'package:ecommerce/features/product/ui/widget/color_picker_widget.dart';
 import 'package:ecommerce/features/product/ui/widget/product_image_carousel_slider.dart';
-import 'package:ecommerce/features/product/ui/widget/product_inc_dec_button.dart';
+
 import 'package:flutter/material.dart';
 
+import '../../../common/ui/widgets/product_inc_dec_button.dart';
 import '../widget/size_picker_widget.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
