@@ -20,7 +20,7 @@ class _CartListScreenState extends State<CartListScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        title: const Text('Cart'),
         leading: IconButton(
           onPressed: _onTap,
           icon: const Icon(Icons.arrow_back_ios),

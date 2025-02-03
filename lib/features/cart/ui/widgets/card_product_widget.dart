@@ -16,7 +16,7 @@ class cardProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 4),
       elevation: 1,
       color: Colors.white,
       child: Padding(

@@ -6,6 +6,7 @@ import 'package:ecommerce/features/auth/ui/screens/otp_varification_screen.dart'
 import 'package:ecommerce/features/auth/ui/screens/splash_screen.dart';
 import 'package:ecommerce/features/category/ui/screens/category_list_screens.dart';
 import 'package:ecommerce/features/common/ui/screens/main_bottom_nav_screen.dart';
+import 'package:ecommerce/features/creatReview/ui/screens/create_review_screen.dart';
 import 'package:ecommerce/features/home/ui/screens/home_screen.dart';
 import 'package:ecommerce/features/product/ui/screens/product_details_screen.dart';
 import 'package:ecommerce/features/product/ui/screens/product_list_screen.dart';
@@ -48,6 +49,8 @@ class CraftyBay extends StatelessWidget {
           widget = ProductDetailsScreen(productId: productId);
         } else if (settings.name == ReviewsScreen.name) {
           widget = const ReviewsScreen();
+        } else if (settings.name == CreateReviewScreen.name) {
+          widget = const CreateReviewScreen();
         }
 
         return MaterialPageRoute(

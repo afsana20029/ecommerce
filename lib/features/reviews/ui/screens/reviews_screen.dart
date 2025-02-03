@@ -1,4 +1,4 @@
-import 'package:ecommerce/features/home/ui/screens/home_screen.dart';
+import 'package:ecommerce/features/creatReview/ui/screens/create_review_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_colors.dart';
@@ -25,9 +25,42 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
       body: Column(
         children: [
           Expanded(
-            child: Column(),
+            child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Card(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    elevation: 1,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.person),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Text('Rabbil Hasan'),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "Lorem ipsum dolor sit amet consectetur, adipisicing elitDeserunt, obcaecati aspernatur libero rerum odit natus eius",
+                            style: textTheme.titleSmall
+                                ?.copyWith(color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
           ),
-          _buildReviewsSection(textTheme)
+          _buildReviewsSection(textTheme),
         ],
       ),
     );
@@ -46,13 +79,21 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
             ],
           ),
           SizedBox(
-              width: 140,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder()
-                ),
-                  onPressed: () {},
-                  child:Text('+',style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold,fontSize: 24),), ))
+            width: 140,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(shape: const CircleBorder()),
+              onPressed: () {
+                Navigator.pushNamed(context, CreateReviewScreen.name);
+              },
+              child: const Text(
+                '+',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24),
+              ),
+            ),
+          ),
         ],
       ),
     );
