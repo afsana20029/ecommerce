@@ -13,7 +13,6 @@ class EmailVerificationScreen extends StatefulWidget {
 }
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
-  @override
   final TextEditingController _emailTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
@@ -47,13 +46,13 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   height: 8,
                 ),
                 TextFormField(
-                  keyboardType:TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (String? value){
-                    if(value?.trim().isEmpty ?? true){
+                  validator: (String? value) {
+                    if (value?.trim().isEmpty ?? true) {
                       return 'Enter your email address';
                     }
-                    if(EmailValidator.validate(value!) == false){
+                    if (EmailValidator.validate(value!) == false) {
                       return 'Enter a valid email address';
                     }
                     return null;
@@ -65,13 +64,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   height: 24,
                 ),
                 ElevatedButton(
-
-                    onPressed: () {
-                      // if(_formKey.currentState!.validate()){
-                      //
-                      // }
-                      Navigator.pushNamed(context, OtpVarificationScreen.name);
-                    },
+                    onPressed: _onTapNextButton,
                     child: const Text(
                       "Next",
                       style: TextStyle(color: Colors.white),
@@ -82,5 +75,11 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
         ),
       ),
     );
+  }
+
+  void _onTapNextButton() {
+    if (_formKey.currentState!.validate()) {
+
+    }
   }
 }
