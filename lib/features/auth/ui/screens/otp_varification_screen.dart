@@ -3,14 +3,21 @@ import 'package:ecommerce/app/app_colors.dart';
 import 'package:ecommerce/app/app_constants.dart';
 import 'package:ecommerce/features/auth/ui/screens/complete_profile_screen.dart';
 import 'package:ecommerce/features/auth/ui/widget/app_icon_widget.dart';
+import 'package:ecommerce/features/common/ui/widgets/center_circular_progress_indicater.dart';
+import 'package:ecommerce/features/common/ui/widgets/show_snackbar_message.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../controller/otp_verfication_controller.dart';
+
 class OtpVarificationScreen extends StatefulWidget {
-  const OtpVarificationScreen({super.key, required String email});
+  const OtpVarificationScreen({
+    super.key,
+    required this.email,
+  });
   static const String name = '/otp-verification';
+  final String email;
   @override
   State<OtpVarificationScreen> createState() => _OtpVarificationScreenState();
 }
@@ -22,6 +29,8 @@ class _OtpVarificationScreenState extends State<OtpVarificationScreen> {
   final RxInt _remainingTime = AppConstants.resendOtpTimeOutInSecs.obs;
   late Timer timer;
   final RxBool _enableResendCodeButton = false.obs;
+  final OtpVerficationController _otpVerificationController =
+      Get.find<OtpVerficationController>();
 
   @override
   void initState() {
@@ -87,18 +96,28 @@ class _OtpVarificationScreenState extends State<OtpVarificationScreen> {
                   keyboardType: TextInputType.number,
                   controller: _otpTEController,
                   appContext: context,
+                  validator: (String? value) {
+                    if (value?.length != 6) {
+                      return 'Enter your Otp';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context,CompleteProfileScreen.name);
-                    },
-                    child: const Text(
-                      "Next",
-                      style: TextStyle(color: Colors.white),
-                    )),
+                GetBuilder<OtpVerficationController>(builder: (controller) {
+                  if(controller.inProgress){
+                    return const CenterCircularProgressIndicater();
+                  }
+                  return ElevatedButton(
+                      onPressed: _onTaoNextButton,
+                      child: const Text(
+                        "Next",
+                        style: TextStyle(color: Colors.white),
+                      ));
+                }),
+
                 const SizedBox(
                   height: 24,
                 ),
@@ -123,20 +142,37 @@ class _OtpVarificationScreenState extends State<OtpVarificationScreen> {
                   ),
                 ),
                 Obx(() => Visibility(
-                  visible: _enableResendCodeButton.value,
-                  child:TextButton(
-                  onPressed: () {
-                    _startResendCodeTimer();
-                  },
-                  child: const Text('Resend Code'),
-                ),)
-                )
+                      visible: _enableResendCodeButton.value,
+                      child: TextButton(
+                        onPressed: () {
+                          _startResendCodeTimer();
+                        },
+                        child: const Text('Resend Code'),
+                      ),
+                    ))
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future<void> _onTaoNextButton() async {
+    if (_formKey.currentState!.validate()) {
+      final bool response = await _otpVerificationController.verifyOtp(
+          widget.email, _otpTEController.text);
+      if (response) {
+        if (mounted) {
+          Navigator.pushNamed(context, CompleteProfileScreen.name);
+        }
+      } else {
+        if (mounted) {
+          showSnackBarMessage(
+              context, _otpVerificationController.errorMessage!);
+        }
+      }
+    }
   }
 
   @override
